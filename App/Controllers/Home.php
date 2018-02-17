@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
-use App\Services\WeatherFactory;
+use App\Services\{WeatherFactory, FeedFactory};
 
 /**
  * Home controller
@@ -31,6 +31,7 @@ class Home extends \Core\Controller
         }
 
         $params['weather'] = (new WeatherFactory($coordinates))->get();
+        $params['rss'] = (new FeedFactory)->get()[0];
 
         View::renderTemplate('Home/index.html', $params);
     }
