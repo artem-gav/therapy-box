@@ -11,12 +11,19 @@ use PDO;
  */
 class User extends \Core\Model
 {
+    public static function auth($login, $password) {
+        $db = static::getDB();
 
-    /**
-     * Get all the users as an associative array
-     *
-     * @return array
-     */
+        $stmt = $db->prepare("SELECT * FROM users WHERE login = :login AND password = :password LIMIT 1");
+
+        $stmt->execute([
+            'login' => $login,
+            'password' => md5(md5($password)),
+        ]);
+
+        return !!$stmt->rowCount();
+    }
+
     public static function getAll()
     {
         $db = static::getDB();
@@ -39,14 +46,6 @@ class User extends \Core\Model
             'password' => md5(md5($data['password'])),
             'picture' => $data['picture'],
         ]);
-    }
-
-    public static function createValidation($data) {
-        if(empty($data['login']) || empty($data['password']) || empty($data['confirm_password']) || empty($data['email']) || empty($data['picture'])) {
-            throw new \Exception('Not all parameters have been transferred');
-        } elseif($data['password'] !== $data['confirm_password']) {
-            throw new \Exception('Confirmation password differs from password');
-        }
     }
 
     private static function checkEmail($email) {

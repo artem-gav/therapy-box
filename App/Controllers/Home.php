@@ -19,6 +19,12 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html');
+        $params = [];
+
+        if($_SESSION) {
+            $params = ['login' => $_SESSION['login']];
+        }
+
+        View::renderTemplate('Home/index.html', $params);
     }
 }

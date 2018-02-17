@@ -4,6 +4,11 @@
 
 {% block body %}
 
-    <h1>Welcome</h1>
+    <h1>Welcome{% if login %}, {{ login }}{% endif %}</h1>
+    {% if login %}
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/login">Login</a>
+    {% endif %}
 
 {% endblock %}
