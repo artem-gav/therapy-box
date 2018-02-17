@@ -11,6 +11,8 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+define('PROJECT_ROOT', dirname(__DIR__));
+define('PUBLIC_FOLDER', PROJECT_ROOT . '/public');
 
 /**
  * Error and Exception handling
@@ -34,6 +36,8 @@ $router = new Core\Router();
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('login', ['controller' => 'UserController', 'action' => 'login']);
 $router->add('login_post', ['controller' => 'UserController', 'action' => 'loginPost']);
+$router->add('register', ['controller' => 'UserController', 'action' => 'register']);
+$router->add('register_post', ['controller' => 'UserController', 'action' => 'registerPost']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);
