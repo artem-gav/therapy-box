@@ -4,3 +4,19 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
     $.post('geolocation', {'latitude': latitude, 'longitude': longitude});
 });
+
+$('.sport form').on('submit', function (e) {
+    e.preventDefault();
+
+    var command = $('[name=command]').val();
+
+    $.post('list_of_losers', {'command': command}).done(function( losers ) {
+        console.log(losers);
+        var html = '';
+        losers.forEach(function (loser) {
+            html += "<li>" + loser + "</li>";
+        });
+
+        $('#loser_commands').html(html);
+    });
+});

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Sport{% endblock %}
+
+{% block body %}
+
+    <div class="sport">
+        <h1 class="text-center">Sport</h1>
+        <form action="login_post" method="post">
+            <input type="text" name="command" class="sport__input">
+        </form>
+        <ul class="sport__list" id="loser_commands"></ul>
+    </div>
+
+{% endblock %}

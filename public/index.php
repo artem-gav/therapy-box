@@ -46,6 +46,8 @@ $router->add('register', ['controller' => 'UserController', 'action' => 'registe
 $router->add('register_post', ['controller' => 'UserController', 'action' => 'registerPost']);
 $router->add('logout', ['controller' => 'UserController', 'action' => 'logout']);
 $router->add('geolocation', ['controller' => 'GeolocationController', 'action' => 'update']);
+$router->add('sport', ['controller' => 'SportController', 'action' => 'index']);
+$router->add('list_of_losers', ['controller' => 'SportController', 'action' => 'list']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);

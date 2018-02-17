@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
-use App\Services\{WeatherFactory, FeedFactory};
+use App\Services\{WeatherFactory, FeedFactory, FootballCsvFactory};
 
 /**
  * Home controller
@@ -32,6 +32,7 @@ class Home extends \Core\Controller
 
         $params['weather'] = (new WeatherFactory($coordinates))->get();
         $params['rss'] = (new FeedFactory)->get()[0];
+        $params['football'] = (new FootballCsvFactory(PUBLIC_FOLDER .  '/assets/csv/I1.csv'))->biggestShotsOnTarget();
 
         View::renderTemplate('Home/index.html', $params);
     }

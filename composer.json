@@ -3,7 +3,8 @@
         "twig/twig": "~2.0",
         "vlucas/phpdotenv": "v2.4.*",
         "cmfcmf/openweathermap-php-api": "^2.2",
-        "fastfeed/fastfeed": "^0.4.0"
+        "fastfeed/fastfeed": "^0.4.0",
+        "league/csv": "^9.1"
     },
     "autoload": {
         "psr-4": {
