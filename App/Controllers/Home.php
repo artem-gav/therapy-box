@@ -20,12 +20,17 @@ class Home extends \Core\Controller
     public function indexAction()
     {
         $params = [];
+        $coordinates = null;
 
-        if($_SESSION) {
+        if($_SESSION && !empty($_SESSION['login'])) {
             $params['login'] = $_SESSION['login'];
         }
 
-        $params['weather'] = (new WeatherFactory('Berlin'))->get();
+        if($_SESSION && !empty($_SESSION['coordinates'])) {
+            $params['coordinates'] = $coordinates = $_SESSION['coordinates'];
+        }
+
+        $params['weather'] = (new WeatherFactory($coordinates))->get();
 
         View::renderTemplate('Home/index.html', $params);
     }

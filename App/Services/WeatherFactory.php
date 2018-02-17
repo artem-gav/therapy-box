@@ -3,11 +3,18 @@
 use Cmfcmf\OpenWeatherMap;
 
 class WeatherFactory {
-    protected $city;
+    protected $query;
     protected $lang = 'en';
 
-    function __construct($city) {
-        $this->city = $city;
+    function __construct($query = null) {
+        if($query === null) {
+            $this->query = [
+                'lat' => 51.509865,
+                'lon' => -0.118092
+            ];
+        } else {
+            $this->query = $query;
+        }
     }
 
     function setLang($lang) {
@@ -16,7 +23,7 @@ class WeatherFactory {
 
     public function get() {
         $owm = new OpenWeatherMap(getenv('OPENWEATHERMAP'));
-        $weather = $owm->getWeather($this->city, getenv('OPENWEATHERMAP_UNITS'), $this->lang);
+        $weather = $owm->getWeather($this->query, getenv('OPENWEATHERMAP_UNITS'), $this->lang);
 
         return [
             'city' => $weather->city->name,

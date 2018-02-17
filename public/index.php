@@ -45,6 +45,7 @@ $router->add('login_post', ['controller' => 'UserController', 'action' => 'login
 $router->add('register', ['controller' => 'UserController', 'action' => 'register']);
 $router->add('register_post', ['controller' => 'UserController', 'action' => 'registerPost']);
 $router->add('logout', ['controller' => 'UserController', 'action' => 'logout']);
+$router->add('geolocation', ['controller' => 'GeolocationController', 'action' => 'update']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);
