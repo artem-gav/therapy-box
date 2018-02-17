@@ -48,6 +48,7 @@ $router->add('logout', ['controller' => 'UserController', 'action' => 'logout'])
 $router->add('geolocation', ['controller' => 'GeolocationController', 'action' => 'update']);
 $router->add('sport', ['controller' => 'SportController', 'action' => 'index']);
 $router->add('list_of_losers', ['controller' => 'SportController', 'action' => 'list']);
+$router->add('news/{id:\d+}', ['controller' => 'NewsController', 'action' => 'index']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);

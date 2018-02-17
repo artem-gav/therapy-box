@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+
+    <div class="news">
+        <h1 class="text-center">News</h1>
+        {% if rss.image %}
+            <img src="{{ rss.image }}" alt="{{ rss.intro }}">
+        {% endif %}
+        <h3 class="rss__title">{{ rss.name }}</h3>
+        <p class="rss__intro">{{ rss.content }}</p>
+    </div>
+
+{% endblock %}
