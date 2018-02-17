@@ -1,6 +1,7 @@
 FROM php:7.1-apache
 
 COPY php.ini /usr/local/etc/php/
+COPY virtual-host.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite \
   && apt-get update \
   && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev libmcrypt-dev \
