@@ -20,3 +20,7 @@ $('.sport form').on('submit', function (e) {
         $('#loser_commands').html(html);
     });
 });
+
+$('.photos [name=photo]').on('change', function  () {
+    $(".photos form").submit();
+});

@@ -57,5 +57,27 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Photos
+                </div>
+                <div class="card-body">
+                    <div class="rss">
+                        <div class="container">
+                            <div class="row">
+                                {% for photo in photos %}
+                                    <div class="col-6">
+                                        <img src="{{ photo.photo }}" alt="{{ photo.id }}" class="img-thumbnail">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

@@ -49,6 +49,8 @@ $router->add('geolocation', ['controller' => 'GeolocationController', 'action' =
 $router->add('sport', ['controller' => 'SportController', 'action' => 'index']);
 $router->add('list_of_losers', ['controller' => 'SportController', 'action' => 'list']);
 $router->add('news/{id:\d+}', ['controller' => 'NewsController', 'action' => 'index']);
+$router->add('photos', ['controller' => 'PhotosController', 'action' => 'index']);
+$router->add('photos_post', ['controller' => 'PhotosController', 'action' => 'create']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);

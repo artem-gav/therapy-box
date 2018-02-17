@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Photos{% endblock %}
+
+{% block body %}
+
+    <div class="photos">
+        <h1 class="text-center">Photos</h1>
+        <form action="photos_post" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-4 col-xs-2">
+                    <input type="file" name="photo" accept='image/*'>
+                </div>
+                {% for photo in photos %}
+                    <div class="col-sm-4 col-xs-2">
+                        <img src="{{ photo.photo }}" alt="{{ photo.id }}" class="img-thumbnail">
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
