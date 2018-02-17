@@ -9,34 +9,13 @@ namespace App;
  */
 class Config
 {
-
-    /**
-     * Database host
-     * @var string
-     */
-    const DB_HOST = 'your-database-host';
-
-    /**
-     * Database name
-     * @var string
-     */
-    const DB_NAME = 'your-database-name';
-
-    /**
-     * Database user
-     * @var string
-     */
-    const DB_USER = 'your-database-user';
-
-    /**
-     * Database password
-     * @var string
-     */
-    const DB_PASSWORD = 'your-database-password';
-
-    /**
-     * Show or hide error messages on screen
-     * @var boolean
-     */
-    const SHOW_ERRORS = true;
+    public static function get() {
+        return [
+            'DB_HOST' => getenv('DB_HOST'),
+            'DB_DATABASE' => getenv('DB_DATABASE'),
+            'DB_USERNAME' => getenv('DB_USERNAME'),
+            'DB_PASSWORD' => getenv('DB_PASSWORD'),
+            'SHOW_ERRORS' => getenv('SHOW_ERRORS'),
+        ];
+    }
 }
