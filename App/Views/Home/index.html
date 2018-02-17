@@ -4,11 +4,30 @@
 
 {% block body %}
 
-    <h1>Welcome{% if login %}, {{ login }}{% endif %}</h1>
-    {% if login %}
-        <a href="/logout">Logout</a>
-    {% else %}
-        <a href="/login">Login</a>
-    {% endif %}
+    <h1>Good day Swapnil</h1>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Wheather
+                </div>
+                <div class="card-body">
+                    <div class="weather">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="weather__icon">CLOUD</i>
+                                </div>
+                                <div class="col">
+                                    <p class="weather__temperature">{{ weather.temperature }}<br>degree</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="weather__city">{{ weather.city }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

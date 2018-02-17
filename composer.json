@@ -1,7 +1,8 @@
 {
     "require": {
         "twig/twig": "~2.0",
-        "vlucas/phpdotenv": "v2.4.*"
+        "vlucas/phpdotenv": "v2.4.*",
+        "cmfcmf/openweathermap-php-api": "^2.2"
     },
     "autoload": {
         "psr-4": {
