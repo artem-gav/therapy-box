@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
-use App\Services\{WeatherFactory, FeedFactory, FootballCsvFactory};
+use App\Services\{WeatherFactory, FeedFactory, FootballCsvFactory, RouteFactory};
 use App\Models\{Photo, Task};
 
 /**
@@ -20,12 +20,12 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
+        if(!isset($_SESSION) || empty($_SESSION['login'])) {
+            return RouteFactory::redirect('/login');
+        }
+
         $params = [];
         $coordinates = null;
-
-        if($_SESSION && !empty($_SESSION['login'])) {
-            $params['login'] = $_SESSION['login'];
-        }
 
         if($_SESSION && !empty($_SESSION['coordinates'])) {
             $params['coordinates'] = $coordinates = $_SESSION['coordinates'];

@@ -4,99 +4,100 @@
 
 {% block body %}
 
-    <h1>Good day Swapnil</h1>
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Wheather
-                </div>
-                <div class="card-body">
-                    <div class="weather">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <i class="weather__icon">CLOUD</i>
-                                </div>
-                                <div class="col">
-                                    <p class="weather__temperature">{{ weather.temperature }}<br>degree</p>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="weather__city">{{ weather.city }}</p>
+    <div class="main">
+        <h1 class="main__title">Good day Swapnil</h1>
+        <div class="row row-eq-height">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Wheather
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    News
-                </div>
-                <div class="card-body">
-                    <div class="rss">
-                        <h3 class="rss__title">
-                            <a href="news/0">{{ rss.name }}</a>
-                        </h3>
-                        <p class="rss__intro">{{ rss.intro }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/sport">Sport</a>
-                </div>
-                <div class="card-body">
-                    <div class="rss">
-                        <h3 class="rss__title">Sport headline</h3>
-                        <p class="rss__intro">The team <b>{{ football.command }}</b> have the biggest number of shots on target - <b>{{ football.shots }}</b></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Photos
-                </div>
-                <div class="card-body">
-                    <div class="photos_card">
-                        <div class="container">
-                            <div class="row">
-                                {% for photo in photos %}
-                                    <div class="col-6">
-                                        <img src="{{ photo.photo }}" alt="{{ photo.id }}" class="img-thumbnail">
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/tasks">Tasks</a>
-                </div>
-                <div class="card-body">
-                    <div class="tasks_card">
-                        <div class="tasks_list">
+                    <div class="card-body">
+                        <div class="weather">
                             <div class="container">
                                 <div class="row">
+                                    <div class="col">
+                                        <i class="weather__icon {% if 80 in weather.weather_id %}weather__icon--cloud{% elseif 50 in weather.weather_id %}weather__icon--rain{% else %}weather__icon--sun{% endif %}"></i>
+                                    </div>
+                                    <div class="col">
+                                        <p class="weather__temperature">{{ weather.temperature }}<br>degrees</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="weather__city">{{ weather.city }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        News
+                    </div>
+                    <div class="card-body">
+                        <div class="rss">
+                            <h3 class="rss__title">
+                                <a href="news/0">{{ rss.name }}</a>
+                            </h3>
+                            <p class="rss__intro">{{ rss.intro }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <a href="/sport">Sport</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="sport">
+                            <h3 class="sport__title">Sport headline</h3>
+                            <p class="sport__intro">The team <b>{{ football.command }}</b> have the biggest number of shots on target - <b>{{ football.shots }}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-eq-height">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <a href="/photos">Photos</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="photos_card">
+                            <div class="container">
+                                <div class="row">
+                                    {% for photo in photos %}
+                                        <div class="col-6">
+                                            <img src="{{ photo.photo }}" alt="{{ photo.id }}" class="img-thumbnail">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <a href="/tasks">Tasks</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="tasks_card">
+                            <div class="tasks_list">
+                                <div class="container">
                                     {% for task in tasks %}
-                                        <div class="col-12">
-                                            <div class="tasks_list__item" data-id="{{ task.id }}">
-                                                <div class="row">
-                                                    <div class="col-10">
-                                                        <input type="text" class="form-control" name="description[{{ task.id }}]" placeholder="Task 1" value="{{ task.description }}" required>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <input type="checkbox" class="form-control" name="checked[{{ task.id }}]" {% if task.checked == 'true' %}checked{% endif %} required>
+                                        <div class="tasks_list__item" data-id="{{ task.id }}">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <input type="text" class="form-control" name="description[{{ task.id }}]" placeholder="Task 1" value="{{ task.description }}" required>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="squaredFour">
+                                                        <input type="checkbox" class="form-control" id="squaredFour[{{ task.id }}]" name="checked[{{ task.id }}]" {% if task.checked == 'true' %}checked{% endif %} required>
+                                                        <label for="squaredFour[{{ task.id }}]"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -108,14 +109,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Clothes
-                </div>
-                <div class="card-body">
-                    <div class="clothes_card" id="chart"></div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Clothes
+                    </div>
+                    <div class="card-body">
+                        <div class="clothes_card" id="chart"></div>
+                    </div>
                 </div>
             </div>
         </div>

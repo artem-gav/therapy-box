@@ -36,6 +36,10 @@ $('.tasks_list input[name^="description"], .tasks_list input[name^="checked"]')
 );
 
 c3.generate({
+    size: {
+        height: 190,
+        width: 250
+    },
     data: {
         bindto: '#chart',
         url: '/clothes_post',

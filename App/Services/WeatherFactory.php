@@ -28,6 +28,7 @@ class WeatherFactory {
         return [
             'city' => $weather->city->name,
             'temperature' => $weather->temperature->now->getValue(),
+            'weather_id' => $weather->weather->id
         ];
     }
 }
