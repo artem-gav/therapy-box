@@ -57,7 +57,7 @@ class UserController extends \Core\Controller
 
             $file = new FileFactory(PUBLIC_FOLDER . '/upload/users/');
             $file->save($data['picture']);
-            $data['picture'] = '/upload/users' . $file->getName();
+            $data['picture'] = '/upload/users/' . $file->getName();
 
             User::create($data);
 
