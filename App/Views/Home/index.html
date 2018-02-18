@@ -46,7 +46,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Sport
+                    <a href="/sport">Sport</a>
                 </div>
                 <div class="card-body">
                     <div class="rss">
@@ -64,7 +64,7 @@
                     Photos
                 </div>
                 <div class="card-body">
-                    <div class="rss">
+                    <div class="photos_card">
                         <div class="container">
                             <div class="row">
                                 {% for photo in photos %}
@@ -72,6 +72,37 @@
                                         <img src="{{ photo.photo }}" alt="{{ photo.id }}" class="img-thumbnail">
                                     </div>
                                 {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <a href="/tasks">Tasks</a>
+                </div>
+                <div class="card-body">
+                    <div class="tasks_card">
+                        <div class="tasks_list">
+                            <div class="container">
+                                <div class="row">
+                                    {% for task in tasks %}
+                                        <div class="col-12">
+                                            <div class="tasks_list__item" data-id="{{ task.id }}">
+                                                <div class="row">
+                                                    <div class="col-10">
+                                                        <input type="text" class="form-control" name="description[{{ task.id }}]" placeholder="Task 1" value="{{ task.description }}" required>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <input type="checkbox" class="form-control" name="checked[{{ task.id }}]" {% if task.checked == 'true' %}checked{% endif %} required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>

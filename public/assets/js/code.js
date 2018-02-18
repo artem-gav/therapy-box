@@ -24,3 +24,13 @@ $('.sport form').on('submit', function (e) {
 $('.photos [name=photo]').on('change', function  () {
     $(".photos form").submit();
 });
+
+$('.tasks_list input[name^="description"], .tasks_list input[name^="checked"]')
+    .on('change', function () {
+        var id = $(this).parents('.tasks_list__item').data('id');
+        var name = /(\w+)\[/g.exec($(this).attr('name'))[1];
+        var value = $(this).attr('type') === 'text' ? $(this).val() : $(this).prop('checked');
+
+        $.post('tasks_update', {'id': id, 'name': name, 'value': value});
+    }
+);

@@ -51,6 +51,9 @@ $router->add('list_of_losers', ['controller' => 'SportController', 'action' => '
 $router->add('news/{id:\d+}', ['controller' => 'NewsController', 'action' => 'index']);
 $router->add('photos', ['controller' => 'PhotosController', 'action' => 'index']);
 $router->add('photos_post', ['controller' => 'PhotosController', 'action' => 'create']);
+$router->add('tasks', ['controller' => 'TasksController', 'action' => 'index']);
+$router->add('tasks_post', ['controller' => 'TasksController', 'action' => 'create']);
+$router->add('tasks_update', ['controller' => 'TasksController', 'action' => 'update']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);

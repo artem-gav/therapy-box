@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+
+<div class="tasks">
+    <h1 class="text-center">Tasks</h1>
+    <div class="tasks_list">
+        <div class="container">
+            <div class="row">
+                {% for task in tasks %}
+                    <div class="col-12">
+                        <div class="tasks_list__item" data-id="{{ task.id }}">
+                            <div class="row">
+                                <div class="col-10">
+                                    <input type="text" class="form-control" name="description[{{ task.id }}]" placeholder="Task 1" value="{{ task.description }}" required>
+                                </div>
+                                <div class="col-2">
+                                    <input type="checkbox" class="form-control" name="checked[{{ task.id }}]" {% if task.checked == 'true' %}checked{% endif %} required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <form action="tasks_post" method="post">
+        <button type="submit" class="tasks__add">+</button>
+    </form>
+</div>
+</div>
+
+{% endblock %}
