@@ -3,5 +3,6 @@
 vendor
 build/mysql/db
 public/upload
+!public/upload/**/.keep
 .env
 composer.lock
