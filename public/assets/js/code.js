@@ -34,3 +34,12 @@ $('.tasks_list input[name^="description"], .tasks_list input[name^="checked"]')
         $.post('tasks_update', {'id': id, 'name': name, 'value': value});
     }
 );
+
+c3.generate({
+    data: {
+        bindto: '#chart',
+        url: '/clothes_post',
+        mimeType: 'json',
+        type : 'pie'
+    }
+});

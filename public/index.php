@@ -54,6 +54,7 @@ $router->add('photos_post', ['controller' => 'PhotosController', 'action' => 'cr
 $router->add('tasks', ['controller' => 'TasksController', 'action' => 'index']);
 $router->add('tasks_post', ['controller' => 'TasksController', 'action' => 'create']);
 $router->add('tasks_update', ['controller' => 'TasksController', 'action' => 'update']);
+$router->add('clothes_post', ['controller' => 'ClothesController', 'action' => 'post']);
 $router->add('{controller}/{action}');
     
 $router->dispatch($_SERVER['QUERY_STRING']);
