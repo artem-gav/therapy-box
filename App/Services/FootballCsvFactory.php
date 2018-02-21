@@ -1,6 +1,7 @@
 <?php namespace App\Services;
 
-use League\Csv\Reader;
+use Exception;
+use League\Csv\{Reader, Exception as LeagueException};
 
 class FootballCsvFactory {
     protected $csv_path;
@@ -9,9 +10,13 @@ class FootballCsvFactory {
     function __construct($csv_path) {
         $this->csv_path = $csv_path;
 
-        $csv = Reader::createFromPath($this->csv_path, 'r');
-        $csv->setHeaderOffset(0);
-        $this->records = $csv->getRecords();
+        try {
+            $csv = Reader::createFromPath($this->csv_path, 'r');
+            $csv->setHeaderOffset(0);
+            $this->records = $csv->getRecords();
+        } catch (LeagueException $e) {
+            throw new FootballCsvFactoryException("Path is not correct");
+        }
     }
 
     public function biggestShotsOnTarget() {
@@ -66,3 +71,5 @@ class FootballCsvFactory {
         return $list;
     }
 }
+
+class FootballCsvFactoryException extends Exception {}
