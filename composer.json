@@ -6,8 +6,9 @@
         "fastfeed/fastfeed": "^0.4.0",
         "league/csv": "^9.1",
         "guzzlehttp/guzzle": "^6.3",
-        "phpunit/phpunit": "^7.0",
-        "mikey179/vfsStream": "^1.6"
+        "phpunit/phpunit": "5.*",
+        "mikey179/vfsStream": "^1.6",
+        "phpunit/phpunit-selenium": "3.*"
     },
     "autoload": {
         "psr-4": {
